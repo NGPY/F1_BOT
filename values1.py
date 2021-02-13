@@ -13,26 +13,26 @@ wiltotal1 = 0
 ball8 = ["It is certain","It is decidedly so.","Without a doubt","Yes - definitely.","You may rely on it.","As I see it, yes.","Most likely.","Outlook good.","Yes.","Signs point to yes.","Reply hazy, try again.","Ask again later.","Beetter not tell you now.","Cannot predict now.","Concentrate and ask again.","Don't count on it","My sources say no.","Outlook not so good.","Very doubtful."]
 
 standings1 = [                 
-	["nod1",0,"mer"],
-	["niffle",2,"mer"],
-	["paradox",10,"bul"],
-	["uhlicek",0,"bul"],
-	["emil",0,"mcl"],
-	["goot",4,"mcl"],
-	["eliax",0,"rac"],
-	["jmlima44",0,"rac"],
-	["majortom",0,"alp"],
-	["hintero",25,"alp"],
-	["fredrik",0,"fer"],
-	["luuk",0,"fer"],
-	["temperr",1,"tau"],
-	["immigration",0,"tau"],
-	["alfie",12,"rom"],
-	["ngpy",8,"rom"],
-	["maikki",18,"has"],
-	["bean",15,"has"],
-	["dawid",6,"wil"],
-	["mango",0,"wil"],
+	["nod1",0,"mer",0],
+	["niffle",2,"mer",9],
+	["paradox",10,"bul",5],
+	["uhlicek",0,"bul",0],
+	["emil",0,"mcl",11],
+	["goot",4,"mcl",8],
+	["eliax",0,"rac",0],
+	["jmlima44",0,"rac",0],
+	["majortom",0,"alp",0],
+	["hintero",25,"alp",1],
+	["fredrik",0,"fer",0],
+	["luuk",0,"fer",0],
+	["temperr",1,"tau",10],
+	["immigration",0,"tau",0],
+	["alfie",12,"rom",4],
+	["ngpy",8,"rom",6],
+	["maikki",18,"has",2],
+	["bean",15,"has",3],
+	["dawid",6,"wil",7],
+	["mango",0,"wil",0],
 ]
 standingssort1 = sorted(standings1,key=lambda l:l[1], reverse=True)
 driverstands1 = ""   # needed for += to work in for loop 
@@ -88,3 +88,4 @@ for i in range(0,10):
 	b = str(constructorssort1[i][1])   # setting the points in the sorted list 
 	ab = str("\nTeam: "+a+"  Points: "+b)    # adding points and name into string
 	constructorstands1 += ab #addint it to the final message
+
