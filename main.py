@@ -16,9 +16,10 @@ async def on_ready():
 	await client.change_presence(activity=discord.Game(name=".help for commands")) 
 @client.event
 async def on_message(message): # when a message is received
-	print(message.author.id,': Message from {0.author}: {0.content}'.format(message))          # prints the message into the console
+          			# prints the message into the console
 	if message.author == client.user:
-		return            # if the message is the coming from the bot do not do any of the commands
+		return    
+	print(message.author.id,': Message from {0.author}: {0.content}'.format(message))        # if the message is the coming from the bot do not do any of the commands
 	if message.content.startswith('.8ball'):    # simple 8 ball system
 		num = random.randint(0,len(ball8))
 		reply = ball8[num]
@@ -52,7 +53,6 @@ async def on_message(message): # when a message is received
 		await message.channel.send('https://cdn.discordapp.com/attachments/809005623899324419/809939640382521364/unknown.png')
 	if message.content.startswith('.stats'):
 		x = message.content.split()
-		print(x)
 		name = x[1]
 		for i in range(0,20):
 			fstring1 = ""
