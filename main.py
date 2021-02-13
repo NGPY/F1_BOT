@@ -83,6 +83,6 @@ async def on_message(message): # when a message is received
 		for i in range(1,len(x)):
 			y += str(x[i]) + " "
 		f=open("reports.txt", "a")
-		f.write("\nUser: "+str(message.author)+" Problem: "+str(y))
+		f.write("\nUser: "+str(message.author)+"Timestamp: "+str(message.created_at)+" Problem: "+str(y))
 
 client.run(token)
