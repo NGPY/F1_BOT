@@ -21,7 +21,7 @@ async def on_message(message): # when a message is received
 		return    
 	print(message.author.id,': Message from {0.author}: {0.content}'.format(message))        # if the message is the coming from the bot do not do any of the commands
 	if message.content.startswith('.8ball'):    # simple 8 ball system
-		num = random.randint(0,len(ball8))
+		num = random.randint(0,len(ball8)-1)
 		reply = ball8[num]
 		await message.channel.send(reply)
 	if message.content.startswith('.help'):   #if the message starts with .help messages that channel with the commands
