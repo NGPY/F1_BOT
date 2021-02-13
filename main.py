@@ -25,7 +25,7 @@ async def on_message(message): # when a message is received
 		reply = ball8[num]
 		await message.channel.send(reply)
 	if message.content.startswith('.help'):   #if the message starts with .help messages that channel with the commands
-		await message.channel.send('.8ball : 8ball response to anything\n.driverstands1 : shows div 1 driver standings\n.driverstands2 : shows div 2 driver standings\n.constructorstands1 : shows div 1 constructor standings\n.constructorstands2 : shows div 2 constructor standings\n.coin : coinflip\n.racetime : shows at what times races start\n.stats : do .stats {name shown in the standings} to see stats')
+		await message.channel.send('.8ball : 8ball response to anything\n.driverstands1 : shows div 1 driver standings\n.driverstands2 : shows div 2 driver standings\n.constructorstands1 : shows div 1 constructor standings\n.constructorstands2 : shows div 2 constructor standings\n.coin : coinflip\n.racetime : shows at what times races start\n.stats : do .stats {name shown in the standings} to see stats\n.report : .report {problem with the bot}')
 	if message.content.startswith('.driverstands1'): # just sends a message with the sorted driver standings in pretty print
 		await message.channel.send(driverstands1)
 	if message.content.startswith('.constructorstands1'):  # just sends the constructor standings in pretty print
@@ -77,4 +77,12 @@ async def on_message(message): # when a message is received
 					ausresult2 == "DNF"
 				fstring2 = "DIV 2\nName: "+name+"\nTeam: "+team2+"\nPoints: "+points2+"\nAustralia Position: "+ausresult2
 				await message.channel.send(fstring2)
+	if message.content.startswith('.report'):
+		x = message.content.split()
+		y = ""
+		for i in range(1,len(x)):
+			y += str(x[i]) + " "
+		f=open("reports.txt", "a")
+		f.write("\nUser: "+str(message.author)+" Problem: "+str(y))
+
 client.run(token)
