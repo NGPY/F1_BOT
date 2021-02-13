@@ -16,7 +16,7 @@ standings1 = [
 	["nod1",0,"mer",0],
 	["niffle",2,"mer",9],
 	["paradox",10,"bul",5],
-	["uhlicek",0,"bul",0],
+	["vict",0,"bul",0],
 	["emil",0,"mcl",11],
 	["goot",4,"mcl",8],
 	["?",0,"rac",0],
