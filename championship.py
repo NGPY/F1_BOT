@@ -43,16 +43,16 @@ class championship():
 	def driverSortedList(self):
 		oString = ""
 		driverStandings = [
-		[self.con1.driverA.name,self.con1.driverA.points,],[self.con1.driverB.name,self.con1.driverB.points,],
-		[self.con2.driverA.name,self.con2.driverA.points,],[self.con2.driverB.name,self.con2.driverB.points,],
-		[self.con3.driverA.name,self.con3.driverA.points,],[self.con3.driverB.name,self.con3.driverB.points,],
-		[self.con4.driverA.name,self.con4.driverA.points,],[self.con4.driverB.name,self.con4.driverB.points,],
-		[self.con5.driverA.name,self.con5.driverA.points,],[self.con5.driverB.name,self.con5.driverB.points,],
-		[self.con6.driverA.name,self.con6.driverA.points,],[self.con6.driverB.name,self.con6.driverB.points,],
-		[self.con7.driverA.name,self.con7.driverA.points,],[self.con7.driverB.name,self.con7.driverB.points,],
-		[self.con8.driverA.name,self.con8.driverA.points,],[self.con8.driverB.name,self.con8.driverB.points,],
-		[self.con9.driverA.name,self.con9.driverA.points,],[self.con9.driverB.name,self.con9.driverB.points,],
-		[self.con10.driverA.name,self.con10.driverA.points,],[self.con10.driverB.name,self.con10.driverB.points,],
+		[self.con1.driverA.name,int(self.con1.driverA.points,)],[self.con1.driverB.name,int(self.con1.driverB.points,)],
+		[self.con2.driverA.name,int(self.con2.driverA.points,)],[self.con2.driverB.name,int(self.con2.driverB.points,)],
+		[self.con3.driverA.name,int(self.con3.driverA.points,)],[self.con3.driverB.name,int(self.con3.driverB.points,)],
+		[self.con4.driverA.name,int(self.con4.driverA.points,)],[self.con4.driverB.name,int(self.con4.driverB.points,)],
+		[self.con5.driverA.name,int(self.con5.driverA.points,)],[self.con5.driverB.name,int(self.con5.driverB.points,)],
+		[self.con6.driverA.name,int(self.con6.driverA.points,)],[self.con6.driverB.name,int(self.con6.driverB.points,)],
+		[self.con7.driverA.name,int(self.con7.driverA.points,)],[self.con7.driverB.name,int(self.con7.driverB.points,)],
+		[self.con8.driverA.name,int(self.con8.driverA.points,)],[self.con8.driverB.name,int(self.con8.driverB.points,)],
+		[self.con9.driverA.name,int(self.con9.driverA.points,)],[self.con9.driverB.name,int(self.con9.driverB.points,)],
+		[self.con10.driverA.name,int(self.con10.driverA.points,)],[self.con10.driverB.name,int(self.con10.driverB.points,)],
 		]
 		driv_standings_sorted = sorted(driverStandings,key=lambda l:l[1], reverse=True) 
 		for i in range(0,20):
@@ -64,7 +64,6 @@ class championship():
 		fcon3 = self.con3.name.split()
 		fcon5 = self.con5.name.split()
 		fcon8 = self.con8.name.split()
-		print(self.con1.name)
 		oString = ""
 		if self.name == str(fcon1[0]):
 			oString = "Team: "+self.con1.name+" Points: "+str(self.con1.points())+"\n"

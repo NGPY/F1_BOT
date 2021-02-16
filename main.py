@@ -4,6 +4,9 @@ from constructor import constructor
 from championship import championship
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+with open("token.txt", "r") as f:
+    lines = f.readlines()
+    token = lines[0]
 scope = scope =["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json",scope)
 client = gspread.authorize(creds)
@@ -73,14 +76,15 @@ async def on_message(message):
 	if message.author == client.user:
 		return    
 	print(message.author.id,': Message from {0.author}: {0.content}'.format(message)) 
-	if message.content.startswith(".standings"):
+	if message.content.startswith(".constructstandings"):
 		await message.channel.send(league.constructorSortedList())
 	if message.content.startswith(".stats"):
 		msg = message.content.lower()
 		splitmsg = msg.split()	
 		oString = league.stats(str(splitmsg[1]))
-
 		await message.channel.send(oString)
 	if message.content.startswith(".drivstandings"):
 		await message.channel.send(league.driverSortedList())
-client.run("ODA5MDA1OTE0MzEyNjcxMjMy.YCOzeA.WdFWuFXe5b5ABwAchDaWjF9GCOw")
+	if message.content.startswith(".help"):
+		await message.channel.send(".constructstandings : sends the sorted list for constructors\n.stats : .stats [team name] shows the teams stats\n.drivstandings : sends the sorted list for the drivers")
+client.run(token)
