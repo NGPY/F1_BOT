@@ -1,7 +1,8 @@
 class driver():
 
-	def __init__(self, name, team, points,div):
-		self.name = name
-		self.team = team
-		self.points = points
-		self.div = div
+	def __init__(self, infoDict):
+        
+		self.name = infoDict['name']
+		self.team = infoDict['team']
+		self.points = infoDict['points']
+		self.div = infoDict['div']
