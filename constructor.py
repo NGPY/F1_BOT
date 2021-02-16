@@ -6,4 +6,4 @@ class constructor():
 		self.driverB = driverB
 
 	def points(self):
-		return self.driverA.points + self.driverB.points
+		return int(self.driverA.points) + int(self.driverB.points)

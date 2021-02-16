@@ -2,45 +2,52 @@ import discord
 from drivers import driver
 from constructor import constructor
 from championship import championship
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+scope = scope =["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json",scope)
+client = gspread.authorize(creds)
+sheet = client.open("F1").sheet1
+
 #Mercedes-----
-mercDriverA = driver("Nod1","mercedes",49)
-mercDriverB = driver("Niffle","mercedes",1)
+mercDriverA = driver(sheet.cell(2,2).value,sheet.cell(2,1).value,sheet.cell(2,4).value)
+mercDriverB = driver(sheet.cell(3,2).value,sheet.cell(3,1).value,sheet.cell(3,4).value)
 mercTeam = constructor("mercedes",mercDriverA,mercDriverB)
 #Alfa Romeo---
-alfaDriverA = driver("ngpy","alfa romeo",23)
-alfaDriverB = driver("alfie","alfa romeo",27)
+alfaDriverA = driver(sheet.cell(4,2).value,sheet.cell(4,1).value,sheet.cell(4,4).value)
+alfaDriverB = driver(sheet.cell(5,2).value,sheet.cell(5,1).value,sheet.cell(5,4).value)
 alfaTeam = constructor("alfa romeo",alfaDriverA,alfaDriverB)
 #Red Bull-----
-bullDriverA = driver("Paradox","red Bull",14)
-bullDriverB = driver("Vict","red Bull",17)
-bullTeam = constructor("red Bull",bullDriverA,bullDriverB)
+bullDriverA = driver(sheet.cell(6,2).value,sheet.cell(6,1).value,sheet.cell(6,4).value)
+bullDriverB = driver(sheet.cell(7,2).value,sheet.cell(7,1).value,sheet.cell(7,4).value)
+bullTeam = constructor("red bull",bullDriverA,bullDriverB)
 #McLaren------
-mclaDriverA = driver("Emil","mclaren",14)
-mclaDriverB = driver("GOOT","mclaren",12)
+mclaDriverA = driver(sheet.cell(8,2).value,sheet.cell(8,1).value,sheet.cell(8,4).value)
+mclaDriverB = driver(sheet.cell(9,2).value,sheet.cell(9,1).value,sheet.cell(9,4).value)
 mclaTeam = constructor("mclaren",mclaDriverA,mclaDriverB)
 #Aston Martin-
-astoDriverA = driver("?","aston martin",0)
-astoDriverB = driver("Lukanoid","aston martin",25)
+astoDriverA = driver(sheet.cell(10,2).value,sheet.cell(10,1).value,sheet.cell(10,4).value)
+astoDriverB = driver(sheet.cell(11,2).value,sheet.cell(11,1).value,sheet.cell(11,4).value)
 astoTeam = constructor("aston martin",astoDriverA,astoDriverB)
 #Alpine-------
-alpiDriverA = driver("Wesley","alpine",2)
-alpiDriverB = driver("Hintero","alpine",3)
+alpiDriverA = driver(sheet.cell(12,2).value,sheet.cell(12,1).value,sheet.cell(12,4).value)
+alpiDriverB = driver(sheet.cell(13,2).value,sheet.cell(13,1).value,sheet.cell(12,4).value)
 alpiTeam = constructor("alpine",alpiDriverA,alpiDriverB)
 #Ferrari------
-ferrDriverA = driver("Sixyeu","ferrari",1)
-ferrDriverB = driver("Luuk","ferrari",18)
+ferrDriverA = driver(sheet.cell(14,2).value,sheet.cell(14,1).value,sheet.cell(14,4).value)
+ferrDriverB = driver(sheet.cell(15,2).value,sheet.cell(15,1).value,sheet.cell(15,4).value)
 ferrTeam = constructor("ferrari",ferrDriverA,ferrDriverB)
 #Alpha Tauri--
-alphDriverA = driver("Temperr","alpha tauri",23)
-alphDriverB = driver("Immigration","alpha tauri",17)
+alphDriverA = driver(sheet.cell(16,2).value,sheet.cell(16,1).value,sheet.cell(16,4).value)
+alphDriverB = driver(sheet.cell(17,2).value,sheet.cell(17,1).value,sheet.cell(17,4).value)
 alphTeam = constructor("alpha tauri",alphDriverA,alphDriverB)
 #Haas---------
-haasDriverA = driver("Maikki","haas",14)
-haasDriverB = driver("Bean","haas",17)
+haasDriverA = driver(sheet.cell(18,2).value,sheet.cell(18,1).value,sheet.cell(18,4).value)
+haasDriverB = driver(sheet.cell(19,2).value,sheet.cell(19,1).value,sheet.cell(19,4).value)
 haasTeam = constructor("haas",haasDriverA,haasDriverB)
 #Williams-----
-willDriverA = driver("Ghaz","williams",11)
-willDriverB = driver("Mango","williams",12)
+willDriverA = driver(sheet.cell(20,2).value,sheet.cell(20,1).value,sheet.cell(20,4).value)
+willDriverB = driver(sheet.cell(21,2).value,sheet.cell(21,1).value,sheet.cell(21,4).value)
 willTeam = constructor("williams",willDriverA,willDriverB)
 #-------------
 league = championship(
@@ -76,4 +83,4 @@ async def on_message(message):
 		await message.channel.send(oString)
 	if message.content.startswith(".drivstandings"):
 		await message.channel.send(league.driverSortedList())
-client.run("token")
+client.run("ODA5MDA1OTE0MzEyNjcxMjMy.YCOzeA.WdFWuFXe5b5ABwAchDaWjF9GCOw")
