@@ -1,10 +1,4 @@
-#import discord
-from drivers import driver
-from constructor import constructor
-from championship import championship
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-import time
+import discord
 from collector import GoogleSheetCollector
 
 #with open("token.txt", "r") as f:
@@ -18,117 +12,39 @@ from collector import GoogleSheetCollector
 
 data = GoogleSheetCollector()
 
-print(data.getDataCell('B2'))
-print(data.getDataColRow(1, 2))
+Championship = data.CreateTeams()
 
-mercDriver1A = driver(data.Row(1))
+print(Championship.ConstructorStandings())
 
 #%%
 
-
-
-
-
-#Mercedes-----
-mercDriver1A = driver(data.Row(1))
-mercDriver1B = driver(sheet.cell(3,2),sheet.cell(3,1),sheet.cell(3,4),1)
-mercDriver2A = driver(sheet.cell(23,2),sheet.cell(23,1),sheet.cell(23,4),2)
-mercDriver2B = driver(sheet.cell(24,2),sheet.cell(24,1),sheet.cell(24,4),2)
-mercTeam = constructor("mercedes",mercDriver1A,mercDriver1B,mercDriver2A,mercDriver2B)
-#Alfa Romeo---
-alfaDriver1A = driver(sheet.cell(4,2),sheet.cell(4,1),sheet.cell(4,4),1)
-alfaDriver1B = driver(sheet.cell(5,2),sheet.cell(5,1),sheet.cell(5,4),1)
-alfaDriver2A = driver(sheet.cell(25,2),sheet.cell(25,1),sheet.cell(25,4),2)
-alfaDriver2B = driver(sheet.cell(26,2),sheet.cell(26,1),sheet.cell(26,4),2)
-alfaTeam = constructor("alfa romeo",alfaDriver1A,alfaDriver1B,alfaDriver2A,alfaDriver2B)
-#Red Bull-----
-bullDriver1A = driver(sheet.cell(6,2),sheet.cell(6,1),sheet.cell(6,4),1)
-bullDriver1B = driver(sheet.cell(7,2),sheet.cell(7,1),sheet.cell(7,4),1)
-bullDriver2A = driver(sheet.cell(27,2),sheet.cell(27,1),sheet.cell(27,4),2)
-bullDriver2B = driver(sheet.cell(28,2),sheet.cell(28,1),sheet.cell(28,4),2)
-bullTeam = constructor("red bull",bullDriver1A,bullDriver1B,bullDriver2A,bullDriver2B)
-#McLaren------
-time.sleep(60)
-mclaDriver1A = driver(sheet.cell(8,2),sheet.cell(8,1),sheet.cell(8,4),1)
-mclaDriver1B = driver(sheet.cell(9,2),sheet.cell(9,1),sheet.cell(9,4),1)
-mclaDriver2A = driver(sheet.cell(29,2),sheet.cell(29,1),sheet.cell(29,4),2)
-mclaDriver2B = driver(sheet.cell(30,2),sheet.cell(30,1),sheet.cell(30,4),2)
-mclaTeam = constructor("mclaren",mclaDriver1A,mclaDriver1B,mclaDriver2A,mclaDriver2B)
-#Aston Martin-
-astoDriver1A = driver(sheet.cell(10,2),sheet.cell(10,1),sheet.cell(10,4),1)
-astoDriver1B = driver(sheet.cell(11,2),sheet.cell(11,1),sheet.cell(11,4),1)
-astoDriver2A = driver(sheet.cell(31,2),sheet.cell(31,1),sheet.cell(31,4),2)
-astoDriver2B = driver(sheet.cell(32,2),sheet.cell(32,1),sheet.cell(32,4),2)
-astoTeam = constructor("aston martin",astoDriver1A,astoDriver1B,astoDriver2A,astoDriver2B)
-time.sleep(60)
-#Alpine-------
-alpiDriver1A = driver(sheet.cell(12,2),sheet.cell(12,1),sheet.cell(12,4),1)
-alpiDriver1B = driver(sheet.cell(13,2),sheet.cell(13,1),sheet.cell(12,4),1)
-alpiDriver2A = driver(sheet.cell(33,2),sheet.cell(33,1),sheet.cell(33,4),2)
-alpiDriver2B = driver(sheet.cell(34,2),sheet.cell(34,1),sheet.cell(34,4),2)
-alpiTeam = constructor("alpine",alpiDriver1A,alpiDriver1B,alpiDriver2A,alpiDriver2B)
-#Ferrari------
-ferrDriver1A = driver(sheet.cell(14,2),sheet.cell(14,1),sheet.cell(14,4),1)
-ferrDriver1B = driver(sheet.cell(15,2),sheet.cell(15,1),sheet.cell(15,4),1)
-ferrDriver2A = driver(sheet.cell(35,2),sheet.cell(35,1),sheet.cell(35,4),2)
-ferrDriver2B = driver(sheet.cell(36,2),sheet.cell(36,1),sheet.cell(36,4),2)
-ferrTeam = constructor("ferrari",ferrDriver1A,ferrDriver1B,ferrDriver2A,ferrDriver2B)
-#Alpha Tauri--
-time.sleep(60)
-alphDriver1A = driver(sheet.cell(16,2),sheet.cell(16,1),sheet.cell(16,4),1)
-alphDriver1B = driver(sheet.cell(17,2),sheet.cell(17,1),sheet.cell(17,4),1)
-alphDriver2A = driver(sheet.cell(37,2),sheet.cell(37,1),sheet.cell(37,4),2)
-alphDriver2B = driver(sheet.cell(38,2),sheet.cell(38,1),sheet.cell(38,4),2)
-alphTeam = constructor("alpha tauri",alphDriver1A,alphDriver1B,alpiDriver2A,alpiDriver2B)
-#Haas---------
-haasDriver1A = driver(sheet.cell(18,2),sheet.cell(18,1),sheet.cell(18,4),1)
-haasDriver1B = driver(sheet.cell(19,2),sheet.cell(19,1),sheet.cell(19,4),1)
-haasDriver2A = driver(sheet.cell(39,2),sheet.cell(39,1),sheet.cell(39,4),2)
-haasDriver2B = driver(sheet.cell(40,2),sheet.cell(40,1),sheet.cell(40,4),2)
-haasTeam = constructor("haas",haasDriver1A,haasDriver1B,haasDriver2A,haasDriver2B)
-#Williams-----
-willDriver1A = driver(sheet.cell(20,2),sheet.cell(20,1),sheet.cell(20,4),1)
-willDriver1B = driver(sheet.cell(21,2),sheet.cell(21,1),sheet.cell(21,4),1)
-willDriver2A = driver(sheet.cell(41,2),sheet.cell(41,1),sheet.cell(41,4),2)
-willDriver2B = driver(sheet.cell(42,2),sheet.cell(42,1),sheet.cell(42,4),2)
-willTeam = constructor("williams",willDriver1A,willDriver1B,willDriver2A,willDriver2B)
 #-------------
-league = championship(
-		alfaTeam,
-		mercTeam,
-		bullTeam,
-		mclaTeam,
-		astoTeam,
-		alpiTeam,
-		ferrTeam,
-		alphTeam,
-		haasTeam,
-		willTeam
-	)
-
-client = discord.Client()
-@client.event
-async def on_ready(): 
-	print('We have logged in as {0.user}'.format(client))	
-	await client.change_presence(activity=discord.Game(name=".help for commands")) 
-@client.event
-async def on_message(message):          
-	if message.author == client.user:
-		return    
-	print(message.author.id,': Message from {0.author}: {0.content}'.format(message)) 
-	if message.content.startswith(".constructstandings") and "div1" in message.content:
-		await message.channel.send(league.constructorSortedList(0))
-	if message.content.startswith(".constructstandings") and "div2" in message.content:
-		await message.channel.send(league.constructorSortedList(1))
-	if message.content.startswith(".stats"):
-		msg = message.content.lower()
-		splitmsg = msg.split()	
-		oString = league.stats(str(splitmsg[1]))
-		await message.channel.send(oString)
-	if message.content.startswith(".drivstandings") and "div1" in message.content:
-		await message.channel.send(league.driverSortedList(0))
-	if message.content.startswith(".drivstandings") and "div2" in message.content:
-		await message.channel.send(league.driverSortedList(1))
-	if message.content.startswith(".help"):
-		await message.channel.send(".constructstandings : sends the sorted list for constructors\n.stats : .stats [team name] shows the teams stats\n.drivstandings : sends the sorted list for the drivers")
-client.run(token)
+# =============================================================================
+# 
+# client = discord.Client()
+# @client.event
+# async def on_ready(): 
+# 	print('We have logged in as {0.user}'.format(client))	
+# 	await client.change_presence(activity=discord.Game(name=".help for commands")) 
+# @client.event
+# async def on_message(message):          
+# 	if message.author == client.user:
+# 		return    
+# 	print(message.author.id,': Message from {0.author}: {0.content}'.format(message)) 
+# 	if message.content.startswith(".constructstandings") and "div1" in message.content:
+# 		await message.channel.send(league.constructorSortedList(0))
+# 	if message.content.startswith(".constructstandings") and "div2" in message.content:
+# 		await message.channel.send(league.constructorSortedList(1))
+# 	if message.content.startswith(".stats"):
+# 		msg = message.content.lower()
+# 		splitmsg = msg.split()	
+# 		oString = league.stats(str(splitmsg[1]))
+# 		await message.channel.send(oString)
+# 	if message.content.startswith(".drivstandings") and "div1" in message.content:
+# 		await message.channel.send(league.driverSortedList(0))
+# 	if message.content.startswith(".drivstandings") and "div2" in message.content:
+# 		await message.channel.send(league.driverSortedList(1))
+# 	if message.content.startswith(".help"):
+# 		await message.channel.send(".constructstandings : sends the sorted list for constructors\n.stats : .stats [team name] shows the teams stats\n.drivstandings : sends the sorted list for the drivers")
+# client.run(token)
+# =============================================================================

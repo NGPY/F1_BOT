@@ -1,25 +1,71 @@
-class constructor():
+from drivers import Driver
 
-	def __init__(self, name, driver1A, driver1B,driver2A,driver2B):
-		self.name = name
-		self.driver1A = driver1A
-		self.driver1B = driver1B
-		self.driver2A = driver2A
-		self.driver2B = driver2B
-		self.__updateteam__()
+class Constructor():
 
-	def __updateteam__(self):
-		if self.driver1A != None:
-			self.driver1A.team = self
-		if self.driver1B != None:
-			self.driver1B.team = self
-		if self.driver2B != None:
-			self.driver2B = self
-		if self.driver2A != None:
-			self.driver2A = self
-	def points(self,div):
-		if div == 0:
-			return int(self.driver1A.points) + int(self.driver1B.points)
-		elif div == 1:
-			return int(self.driver2A.points) + int(self.driver1B.points)
+    def __init__(self, name):
 
+        # Name of constructor
+        self.name = name
+
+        # All drivers
+        self.driver1a = None
+        self.driver1b = None
+        self.driver2a = None
+        self.driver2b = None
+
+        # Points
+        self.Div1Points = 0
+        self.Div2Points = 0
+        self.points = 0
+
+    def __UpdateTeam__(self):
+        """
+        Update each drivers team attribute
+        Returns
+        -------
+        None.
+        """
+
+        if self.driver1a != None:
+            self.driver1a.team = self
+        if self.driver1b != None:
+            self.driver1b.team = self
+        if self.driver2a != None:
+            self.driver2a.team = self
+        if self.driver2b != None:
+            self.driver2b.team = self
+            
+
+    def __UpdatePoints__(self):
+        """
+        Update points for Constructor. Does a running total so don't call twice. 
+        Called at creation of object.
+        Returns
+        -------
+        None.
+        """
+
+        if self.driver1a != None:
+            self.Div1Points += self.driver1a.points
+        if self.driver1b != None:
+            self.Div1Points += self.driver1a.points
+        if self.driver2a != None:
+            self.Div2Points += self.driver2a.points
+        if self.driver2b != None:
+            self.Div2Points += self.driver2a.points
+        self.points += self.Div1Points + self.Div2Points
+        
+    def TeamPointsString(self):
+        return "Team: {} Points: {}\n".format(self.name, self.points) 
+    
+    def addDriver(self, name, points, div):
+        
+        driver = Driver(name, points, div)
+               
+        if driver.division == 1 and self.driver1a == None: self.driver1a = driver
+        elif driver.division == 1 and self.driver1a != None: self.driver1b = driver
+        
+        if driver.division == 2 and self.driver2a == None: self.driver2a = driver
+        elif driver.division == 2 and self.driver2a != None: self.driver2b = driver
+        
+        

@@ -1,5 +1,8 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from drivers import Driver
+from championship import Championship
+from constructor import Constructor
 
 class GoogleSheetCollector():
     
@@ -24,6 +27,31 @@ class GoogleSheetCollector():
                 tempDict.update({item:row[instructions[item]]})          
             self.data.append(tempDict)
             
+    def CreateTeams(self):
+        
+        teams = {}
+        
+        for row in self.data:
+            
+            team = row['team']
+            name = row['name']
+            div = int(row['div'])
+            points = int(row['points'])
+                       
+            if team not in teams:
+                teams.update({team: Constructor(team)})
+                            
+            teams[team].addDriver(name, points, div)
+        
+        for team in teams:
+            teams[team].__UpdateTeam__()
+            teams[team].__UpdatePoints__()
+        
+        self.Championship = Championship([teams[i] for i in teams])
+        
+        return self.Championship
+        
+        
         
         
     def getDataCell(self, cell):
@@ -36,14 +64,9 @@ class GoogleSheetCollector():
     def getDataColRow(self, col, row):
     
         key = list(self.data[row - 2])[col - 1]
-        
-        print()
-        
         return self.data[row - 2][key]
     
     def Row(self, row):
         return self.data[row - 1]
         
-          
-        
-        
+    
